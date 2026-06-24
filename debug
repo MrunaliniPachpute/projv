@@ -1,0 +1,24 @@
+def build_resolution(ticket_no,
+                     ack_df,
+                     admin_codes=None):
+
+    print("Looking for ticket:", ticket_no)
+
+    print("ACK sample:")
+    print(ack_df.head())
+
+    rows = ack_df[
+        ack_df["ASNO"] == ticket_no
+    ]
+
+    print("Matched rows:")
+    print(rows)
+
+    remarks = rows["REMARKS"].fillna("")
+
+    print("Remarks:")
+    print(remarks.tolist())
+
+    return "\n".join(
+        remarks.tolist()
+    )
